@@ -135,26 +135,27 @@ streamlit run app.py
 
 ## ✨ Features
 
-- 📄 Upload and process educational PDFs
-- 🔍 Search relevant PDF content
-- 💬 Ask questions about the PDF
-- 🤖 Generate answers using Llama 3.1
-- 🔒 Run completely offline with local AI
+* 📄 Upload and process educational PDFs
+* 🔍 Search and retrieve relevant PDF content
+* 🌐 Generate answers in English and Urdu
+* 💬 Ask questions about your PDFs
+* 📚 Support multiple PDFs at the same time
+* 🤖 Generate contextual answers using Llama 3.1
+* 🔒 Run completely offline using local AI models
+
 ---
 
 ## ⚠️ Limitations
 
-- Supports one PDF at a time.
-- Answers are primarily generated in English.
 - Scanned PDFs requiring OCR are not currently supported.
-- Quiz, flashcard, and voice features are not yet implemented.
-- Summary generation may not work reliably in all cases.
+- Voice features are not yet implemented.
+
 ---
 
 ## 🚀 Future Roadmap
 
 - [ ] Support multiple PDFs
-- [ ] Add Urdu and multilingual support
+- [ ] Add multilingual support
 - [ ] Improve summary generation
 - [ ] Add quiz and flashcard generation
 - [ ] Add OCR for scanned PDFs
