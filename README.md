@@ -24,17 +24,23 @@ Students often lose access to essential learning due to unreliable internet, pow
 
 ## 🧠 How It Works
 
-```mermaid
-flowchart TD
-    A[Student Uploads PDF] --> B[Extract Text]
-    B --> C[Split into Chunks]
-    C --> D[Generate Local Embeddings]
-    D --> E[Store in ChromaDB]
-    F[Student Asks a Question] --> G[Retrieve Relevant Content]
-    E --> G
-    G --> H[Llama 3.1 via Ollama]
-    H --> I[Generate AI Answer]
----
+Student Uploads PDF  
+↓  
+Extract Text  
+↓  
+Split into Chunks  
+↓  
+Generate Local Embeddings  
+↓  
+Store in ChromaDB  
+↓  
+Student Asks a Question  
+↓  
+Retrieve Relevant Content  
+↓  
+Llama 3.1 via Ollama  
+↓  
+Generate AI Answer
 ## 🛠️ Tech Stack
 
 - **Python** — Application development
@@ -66,41 +72,49 @@ Before running the project, make sure you have:
 
 ### 1. Clone the Repository
 
-    git clone https://github.com/<username>/offline-ai-tutor.git
-    cd offline-ai-tutor
+```bash
+git clone https://github.com/<username>/offline-ai-tutor.git
+cd offline-ai-tutor
+```
 
-### 2. Create a Virtual Environment
+### 2. Create & Activate Virtual Environment
 
-    python -m venv venv
-
-### 3. Activate the Virtual Environment
+```bash
+python -m venv venv
+```
 
 **Windows:**
 
-    venv\Scripts\activate
+```bash
+venv\Scripts\activate
+```
 
 **macOS/Linux:**
 
-    source venv/bin/activate
+```bash
+source venv/bin/activate
+```
 
-### 4. Install Dependencies
+### 3. Install Dependencies
 
-    pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
-### 5. Install and Start Ollama
+### 4. Install Ollama & Models
 
-Download and install Ollama from:
+Install [Ollama](https://ollama.com), then run:
 
-https://ollama.com
+```bash
+ollama pull llama3.1
+ollama pull nomic-embed-text
+```
 
-Then pull the required models:
+### 5. Run the Application
 
-    ollama pull llama3.1
-    ollama pull nomic-embed-text
-
-### 6. Run the Application
-
-    streamlit run app.py
+```bash
+streamlit run app.py
+```
 
 ## 📖 How to Use
 
