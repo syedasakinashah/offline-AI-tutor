@@ -1,213 +1,169 @@
 # 🎓 Offline AI Tutor
+
 > **An AI tutor that helps students learn from their own study material — without requiring an internet connection at runtime.**
 
-Offline AI Tutor is a locally running **Retrieval-Augmented Generation (RAG)** application that allows students to ask questions about an educational PDF.
-The system retrieves relevant information from the PDF and generates answers using a **local Llama 3.1 model through Ollama**. The core RAG pipeline runs locally, so the student's study material does not need to be sent to a cloud AI service.
+Offline AI Tutor is a locally running **Retrieval-Augmented Generation (RAG)** application that allows students to ask questions about an educational PDF. The system retrieves relevant information from the PDF and generates answers using a **local Llama 3.1 model through Ollama**. The core RAG pipeline runs locally, so the student's study material does not need to be sent to a cloud AI service.
 
 ---
 
-
 ## 🚨 Problem
+
 Students often lose access to essential learning due to unreliable internet, power outages, and network disruptions. Without internet access, they have no immediate way to search for information, clarify concepts, or get AI-powered assistance.
 
 ### 💡 Our Idea
 
-**What if students had an offline AI tool that could answer their questions and provide instant information—without requiring an internet connection?**
+**What if students had an offline AI tool that could answer their questions and provide instant information — without requiring an internet connection?**
 
 ---
 
 ## 💡 Solution
 
-**To address this problem, we focused on students in the education sector and developed an Offline AI Tutor that can answer their questions directly from uploaded educational PDFs—even without an internet connection.**
+**To address this problem, we focused on students in the education sector and developed an Offline AI Tutor that can answer their questions directly from uploaded educational PDFs — even without an internet connection.**
 
 ---
 
 ## 🧠 How It Works
 
-Student Uploads PDF
-        │
-        ▼
-   Extract Text
-        │
-        ▼
-   Split into Chunks
-        │
-        ▼
- Generate Local Embeddings
-        │
-        ▼
-  Store in ChromaDB
-        │
-        ▼
-Student Asks a Question
-        │
-        ▼
- Retrieve Relevant Content
-        │
-        ▼
- Send Context to Llama 3.1
-     via Ollama
-        │
-        ▼
-  Generate AI Answer
-
+```mermaid
+flowchart TD
+    A[Student Uploads PDF] --> B[Extract Text]
+    B --> C[Split into Chunks]
+    C --> D[Generate Local Embeddings]
+    D --> E[Store in ChromaDB]
+    F[Student Asks a Question] --> G[Retrieve Relevant Content]
+    E --> G
+    G --> H[Llama 3.1 via Ollama]
+    H --> I[Generate AI Answer]
 ---
-
-## 🏗️ System Architecture
-
-| Layer | Technology | Purpose |
-|---|---|---|
-| **PDF Processing** | PyMuPDF | Extract text from PDFs |
-| **Chunking** | LangChain | Split text into chunks |
-| **Embeddings** | Nomic Embed Text + Ollama | Convert text into vectors |
-| **Vector Database** | Chroma | Store and search vectors |
-| **Retrieval** | LangChain | Find relevant content |
-| **AI Generation** | Llama 3.1 + Ollama | Generate answers |
-| **Interface** | Streamlit | User interaction |
----
-
 ## 🛠️ Tech Stack
 
-- **Python** — Core application logic
-- **Ollama** — Local AI model serving
-- **Llama 3.1** — Local language model
-- **Nomic Embed Text** — Local embedding model
-- **Chroma** — Vector database
+- **Python** — Application development
+- **Streamlit** — User interface
 - **LangChain** — RAG pipeline and retrieval
 - **PyMuPDF** — PDF text extraction
-- **Streamlit** — User interface
+- **ChromaDB** — Vector storage and similarity search
+- **Ollama** — Local AI model runtime
+- **Llama 3.1** — Answer generation
+- **Nomic Embed Text** — Text embeddings
 - **Pytest** — Testing
 - **Git & GitHub** — Version control
 
 ---
 
-## 🤖 Models Used
-
-| Purpose | Model | Platform |
-|---|---|---|
-| **Text Generation** | Llama 3.1 | Ollama |
-| **Embeddings** | Nomic Embed Text | Ollama |
----
-
-## 📁 Project Structure
-
-offline-ai-tutor/
-├── app.py
-├── requirements.txt
-├── README.md
-└── ...
-
 ## ✅ Requirements
 
-- Python 3.10+
-- Ollama
-- Llama 3.1
-- Nomic Embed Text
-- Windows, macOS, or Linux
+Before running the project, make sure you have:
+
+- **Python 3.10 or higher**
+- **Ollama** installed and running
+- **Llama 3.1** — local language model
+- **Nomic Embed Text** — local embedding model
+- **Git** — for cloning the repository
+- **Windows, macOS, or Linux**
+- Sufficient RAM and disk space for running local AI models
 
 ## ⚙️ Installation
 
-Clone the repository and install the dependencies:
+### 1. Clone the Repository
 
     git clone https://github.com/<username>/offline-ai-tutor.git
     cd offline-ai-tutor
+
+### 2. Create a Virtual Environment
+
     python -m venv venv
+
+### 3. Activate the Virtual Environment
+
+**Windows:**
+
     venv\Scripts\activate
+
+**macOS/Linux:**
+
+    source venv/bin/activate
+
+### 4. Install Dependencies
+
     pip install -r requirements.txt
+
+### 5. Install and Start Ollama
+
+Download and install Ollama from:
+
+https://ollama.com
+
+Then pull the required models:
+
     ollama pull llama3.1
     ollama pull nomic-embed-text
 
-## ▶️ Running the Project
+### 6. Run the Application
 
     streamlit run app.py
 
-Upload an educational PDF and ask questions about its content. The system processes the PDF and generates answers locally without requiring an internet connection.
-## 📖 How to Use the Project
-1. Launch the app — it opens in your browser via Streamlit.
+## 📖 How to Use
+
+1. Launch the Streamlit app.
 2. Upload an educational PDF.
-3. Wait for the document to be processed, chunked, and embedded into Chroma.
-4. Type a question about the PDF's content.
-5. The app retrieves relevant chunks and returns an answer generated by Llama 3.1.
+3. Ask a question about the PDF.
+4. Get an AI-generated answer based on the PDF content.
 
-Currently, one PDF can be active at a time, and answers are primarily generated in English.
-
----
-
-## 🔍 How RAG Works in This Project
-**Retrieval-Augmented Generation (RAG)** combines a search step with a generation step:
-- **Retrieval** — the student's question is embedded and compared against the PDF's stored chunks in Chroma to find the most relevant passages.
-- **Generation** — those passages are inserted into the prompt sent to Llama 3.1, so the model answers using the actual document content instead of relying only on what it learned during training.
-
-This grounds answers in the uploaded material and reduces hallucination compared to an ungrounded LLM.
-
+> Currently supports one PDF at a time and primarily provides answers in English.
 ---
 
 ## 🔒 Offline & Privacy
-- After models are pulled and dependencies installed, the core pipeline (embedding, retrieval, and generation) runs without an internet connection.
-- The uploaded PDF, its embeddings, and the vector store stay on the local machine.
-- No document content is sent to an external API at runtime.
 
+- Runs locally without an internet connection.
+- PDFs and embeddings remain on the user's device.
+- No document data is sent to external APIs.
 ---
 
-## ✨ Current Features
-- PDF upload and text extraction
-- Automatic text chunking
-- Local embedding generation
-- Chroma-based vector storage and retrieval
-- Question answering grounded in the uploaded PDF
-- Fully local inference via Ollama (Llama 3.1)
+## ✨ Features
 
+- 📄 Upload and process educational PDFs
+- 🔍 Search relevant PDF content
+- 💬 Ask questions about the PDF
+- 🤖 Generate answers using Llama 3.1
+- 🔒 Run completely offline with local AI
 ---
 
 ## ⚠️ Limitations
-- Only one active PDF is supported at a time
-- Summary generation is implemented but not currently working reliably
-- Quiz generation is not yet implemented
-- Flashcards are not yet implemented
-- Voice input/output is not yet implemented
-- Answers are primarily generated in English; multilingual support is planned
-- Scanned/image-based PDFs may require OCR, which is not yet integrated
 
+- Supports one PDF at a time.
+- Answers are primarily generated in English.
+- Scanned PDFs requiring OCR are not currently supported.
+- Quiz, flashcard, and voice features are not yet implemented.
+- Summary generation may not work reliably in all cases.
 ---
 
 ## 🚀 Future Roadmap
-- [ ] Quiz generation from document content
-- [ ] Flashcards
-- [ ] Reliable summary generation
-- [ ] Urdu and other regional language support
-- [ ] Voice input/output
-- [ ] Support for multiple PDFs at once
-- [ ] OCR support for scanned documents
-- [ ] Educational animations
-- [ ] Personalized learning paths
 
+- [ ] Support multiple PDFs
+- [ ] Add Urdu and multilingual support
+- [ ] Improve summary generation
+- [ ] Add quiz and flashcard generation
+- [ ] Add OCR for scanned PDFs
+- [ ] Add voice input and output
+- [ ] Introduce personalized learning paths
 ---
 
-## 🐞 Troubleshooting
-
-| Issue | Possible Fix |
-|---|---|
-| `ollama: command not found` | Install Ollama from [ollama.com](https://ollama.com) and restart your terminal |
-| Ollama not responding | Ensure `ollama serve` is running before starting the app |
-| Model not found | Run `ollama pull llama3.1` and `ollama pull nomic-embed-text` |
-| Slow responses | Check available RAM; Llama 3.1 is resource-intensive on lower-end machines |
-| PDF text not extracted | Confirm the PDF contains selectable text, not scanned images |
-| App works on one machine but not another | Ollama and model setup are machine-dependent — verify Ollama is installed and models are pulled on that machine |
 
 ---
 
 ## 👥 Team
-**Team Aries**
-- **Sakina** — AI/RAG & UI Contributor, Documentation & Presentation (PDF embeddings/retrieval integration, Ollama integration, Streamlit UI, GitHub repository management, documentation and presentation)
-- **Fahad** — Lead Developer, Project Integration & Deployment (core development, project setup and integration, local Ollama/model environment, testing and deployment environment)
 
+### Team Aries
+
+- **Sakina** — AI/RAG, Streamlit UI, Documentation & Presentation
+- **Fahad** — Lead Developer, Project Integration & Deployment
 ---
-
 ## 🏆 Hackathon
-Built for the **Bano Qabil × Alibaba Cloud AI Hackathon Pakistan 2026**
-**Track:** Education
 
+Built for the **Bano Qabil × Alibaba Cloud AI Hackathon Pakistan 2026**  
+**Track:** Education
 ---
 
 ## 📄 License
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) — free to use, modify, and distribute with attribution.
+
+This project is licensed under the **MIT License**.
