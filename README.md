@@ -168,7 +168,7 @@ streamlit run app.py
 
 ## 👥 Team
 
-### Team Aries
+### Team SHARKx
 
 - **Sakina** — AI/RAG, Streamlit UI, Documentation & Presentation
 - **Fahad** — Lead Developer, Project Integration & Deployment
