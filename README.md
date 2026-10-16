@@ -2,7 +2,7 @@
 
 > **An AI tutor that helps students learn from their own study material — without requiring an internet connection at runtime.**
 
-Offline AI Tutor is a locally running **Retrieval-Augmented Generation (RAG)** application that allows students to ask questions about an educational PDF. The system retrieves relevant information from the PDF and generates answers using a **local Llama 3.1 model through Ollama**. The core RAG pipeline runs locally, so the student's study material does not need to be sent to a cloud AI service.
+Offline AI Tutor is a locally running **Retrieval-Augmented Generation (RAG)** application that allows students to ask questions about an educational PDF. The system retrieves relevant information from the PDF and generates answers using a **local llama3.2:3b model through Ollama**. The core RAG pipeline runs locally, so the student's study material does not need to be sent to a cloud AI service.
 
 ---
 
