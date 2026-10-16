@@ -49,7 +49,7 @@ Generate AI Answer
 - **PyMuPDF** — PDF text extraction
 - **ChromaDB** — Vector storage and similarity search
 - **Ollama** — Local AI model runtime
-- **Llama 3.1** — Answer generation
+- **ollama pull llama3.2:3b
 - **Nomic Embed Text** — Text embeddings
 - **Pytest** — Testing
 - **Git & GitHub** — Version control
@@ -62,8 +62,8 @@ Before running the project, make sure you have:
 
 - **Python 3.10 or higher**
 - **Ollama** installed and running
--ollama pull llama3.2:3b
--ollama pull nomic-embed-text
+- **ollama pull llama3.2:3b
+- **ollama pull nomic-embed-text
 - **Git** — for cloning the repository
 - **Windows, macOS, or Linux**
 - Sufficient RAM and disk space for running local AI models
@@ -138,9 +138,9 @@ streamlit run app.py
 * 📄 Upload and process educational PDFs
 * 🔍 Search and retrieve relevant PDF content
 * 🌐 Generate answers in English and Urdu
-* 💬 Ask questions about your PDFs
+* 💬 Ask questions/summary/quizz about your PDFs
 * 📚 Support multiple PDFs at the same time
-* 🤖 Generate contextual answers using Llama 3.1
+* 🤖 Generate contextual answers using llama3.2:3b
 * 🔒 Run completely offline using local AI models
 
 ---
@@ -168,7 +168,7 @@ streamlit run app.py
 
 ## 👥 Team
 
-### Team SHARKx
+### Team Aries X Representative of SHARKX
 
 - **Sakina** — AI/RAG, Streamlit UI, Documentation & Presentation
 - **Fahad** — Lead Developer, Project Integration & Deployment
