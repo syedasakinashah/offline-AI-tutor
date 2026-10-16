@@ -62,8 +62,8 @@ Before running the project, make sure you have:
 
 - **Python 3.10 or higher**
 - **Ollama** installed and running
-- **Llama 3.1** — local language model
-- **Nomic Embed Text** — local embedding model
+-ollama pull llama3.2:3b
+-ollama pull nomic-embed-text
 - **Git** — for cloning the repository
 - **Windows, macOS, or Linux**
 - Sufficient RAM and disk space for running local AI models
