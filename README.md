@@ -38,7 +38,7 @@ Student Asks a Question
 ↓  
 Retrieve Relevant Content  
 ↓  
-Llama 3.1 via Ollama  
+llama3.2:3b 
 ↓  
 Generate AI Answer
 ## 🛠️ Tech Stack
