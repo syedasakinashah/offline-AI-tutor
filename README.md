@@ -106,7 +106,7 @@ pip install -r requirements.txt
 Install [Ollama](https://ollama.com), then run:
 
 ```bash
-ollama pull llama3.1
+ollama pull llama3.2:3b
 ollama pull nomic-embed-text
 ```
 
